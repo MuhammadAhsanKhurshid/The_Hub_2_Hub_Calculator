@@ -5,18 +5,19 @@ import pandas as pd
 st.set_page_config(page_title="Hub-to-Hub Distance Calculator", layout="centered")
 
 st.title("📍 Hub-to-Hub Distance Calculator")
-st.markdown("Easily check road distances and travel time between logistics nodes.")
+st.markdown("Easily check road distances and travel time between logistics hubs.")
 
-# Load fixed dataset (already in repo)
+# Load fixed dataset
 df = pd.read_csv("dummy_node_distances.csv")
 
-# Dropdowns for selecting nodes
-nodes = sorted(df["Node1"].unique().tolist() + df["Node2"].unique().tolist())
-node1 = st.selectbox("Select **Origin Node**", nodes)
-node2 = st.selectbox("Select **Destination Node**", nodes)
+# Collect all unique hub names
+nodes = sorted(set(df["Node1"]).union(set(df["Node2"])))
+
+# Dropdowns with hub names (like CTN, BDD, etc.)
+node1 = st.selectbox("From (Origin Hub)", nodes)
+node2 = st.selectbox("To (Destination Hub)", nodes)
 
 if st.button("🔍 Calculate Distance"):
-    # Try to find matching row in either direction
     row = df[((df["Node1"] == node1) & (df["Node2"] == node2)) |
              ((df["Node1"] == node2) & (df["Node2"] == node1))]
 
@@ -24,11 +25,6 @@ if st.button("🔍 Calculate Distance"):
         distance = row.iloc[0]["Distance_km"]
         time = row.iloc[0]["Time_min"]
 
-        st.success(f"""
-        🚚 **Distance**: {distance} km  
-        ⏱️ **Estimated Time**: {time} minutes
-        """)
-    else:
-        st.error("No distance found between the selected nodes.")
+        st.success(f""
 
 

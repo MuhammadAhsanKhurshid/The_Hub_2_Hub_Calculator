@@ -1,0 +1,7 @@
+Node1,Node2,Distance_km,Time_min
+A,B,12,20
+A,C,25,40
+B,A,12,20
+B,C,18,30
+C,A,25,40
+C,B,18,30

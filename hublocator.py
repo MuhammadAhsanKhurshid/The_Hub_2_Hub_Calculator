@@ -25,6 +25,13 @@ if st.button("🔍 Calculate Distance"):
         distance = row.iloc[0]["Distance_km"]
         time = row.iloc[0]["Time_min"]
 
-        st.success(f""
+        st.success(f"""
+        **From Hub:** {node1}  
+        **To Hub:** {node2}  
 
+        🚚 **Distance**: {distance} km  
+        ⏱️ **Estimated Time**: {time} minutes
+        """)
+    else:
+        st.error("❌ No road distance found between the selected hubs.")
 

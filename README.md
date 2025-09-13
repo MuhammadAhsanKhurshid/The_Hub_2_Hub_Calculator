@@ -1,2 +1,1 @@
-# hub2hub
-In this app, you can easily identify the distance and time between nodes of hubs
+In this app, you can easily check the distance and time between different hubs. Hubs, also called mini-warehouses, are places where packages are kept for a short time before being delivered to customers. The idea behind this mock app is simple, when I am on the road or sitting in a car and want to know the distance between two hubs, I can just open this app and see it right away, instead of putting coordinates into Google Maps.
